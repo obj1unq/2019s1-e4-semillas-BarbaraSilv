@@ -1,0 +1,43 @@
+import semillas.*
+
+
+describe "Parcelas"{
+	
+	const menta1 = new Menta(anioDeOptencion = 2011, altura = 1)
+	 const menta2 = new Menta(anioDeOptencion = 2011, altura= 0.3)
+	 const soja1= new Soja(anioDeOptencion= 2009, altura = 0.6 )	
+	 const quinoa1 = new Quinoa(anioDeOptencion =2010 , altura= 0 , toleranciaAlSol = 12) 
+	 const quinoa2= new Quinoa(anioDeOptencion =2001 , altura= 0 , toleranciaAlSol = 8)
+	 const hierbabuena1 = new Hierbabuena(anioDeOptencion = 2011, altura = 1 ) 	
+	const parcela1 = new Parcela (ancho = 20, largo = 1, horasDeSol = 8, plantas = [menta1,menta2,soja1,quinoa1,quinoa2, hierbabuena1])
+	
+	fixture{
+		inta.parcelas().add(parcela1)
+	}
+	test "parcela tiene complicaciones "{
+		assert.that(parcela1.complicaciones())
+	}
+	
+	test "parcela1 deberia tener una superficie de 20 "{
+		assert.equals(20,parcela1.superficie()) 
+	}
+	
+	test "parcela1 deberia tolerar  una cantidad maxima de 4 "{
+		assert.equals(4, parcela1.cantidadMaxima())
+	}
+	test "parcela1 no es ecologica "{
+		assert.notThat(parcela1.esEcologica())
+	}
+	test "parcela es industrial "{
+		assert.that(parcela1.esIndustrial())
+	}
+	
+	test " parcela autosustentable"{
+		assert.equals(parcela1, inta.masAutosustentable())
+	}
+	
+	test " promedio de plantas "{
+		assert.equals(6,inta.promedioPlantas())
+	}
+	
+}
