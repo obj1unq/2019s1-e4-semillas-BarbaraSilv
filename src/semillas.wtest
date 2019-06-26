@@ -1,0 +1,64 @@
+import semillas.*
+//una menta de 1 metro, debería dar semillas y ocupar un espacio de 3 metros cuadrados.
+describe "Plantas "{
+	 const menta1 = new Menta(anioDeOptencion = 2011, altura = 1)
+	 const menta2 = new Menta(anioDeOptencion = 2011, altura= 0.3)
+	 const soja1= new Soja(anioDeOptencion= 2009, altura = 0.6 )	
+	 const quinoa1 = new Quinoa(anioDeOptencion =2010 , altura= 0 , toleranciaAlSol = 12) 
+	 const quinoa2= new Quinoa(anioDeOptencion =2001 , altura= 0 , toleranciaAlSol = 9) 	
+	 const hierbabuena1 = new Hierbabuena(anioDeOptencion = 2011, altura = 1 )
+	 const sojaTransgenica1 = new SojaTransgenica()
+	
+	
+	 
+/// test Menta 		
+	test "test de menta1, deberia dar semilla " {
+		assert.that(menta1.daSemillas())
+	}
+	test  "test de menta1, no deberia dar semilla"{
+		assert.notThat(menta2.daSemillas())
+	}
+
+	test "menta1 deberia ocupar 3 metros cuadrados"{
+		assert.equals(3,menta1.espacioOcupado())
+	}
+	
+// test hierbabuena 
+	test "hierbabuena1 deberia ocupar un espacio de 6 tomando el ejemplo de menta1 "{
+		assert.equals(6,hierbabuena1.espacioOcupado()) 
+	}
+
+////Test Soja 
+
+	test " soja1 tiene tolerancia al sol de 7 horas "{
+		assert.equals(7,soja1.toleranciaAlSol())
+	}
+
+
+	test "soja1 no da semillas "{
+		assert.notThat(soja1.daSemillas())
+	}
+
+	test "soja1 ocuparia 0.3 m2"{
+		assert.equals(0.3, soja1.espacioOcupado())
+	}
+
+///  SojaTransgenica
+	test "soja transgenica deberia dar false sin importar la condicion de herencia  "{
+		assert.notThat(sojaTransgenica1.daSemillas())
+	}
+
+//////test quinoa 
+	test "quinoa1 deberia dar semillas "{
+		assert.that(quinoa1.daSemillas())
+	}
+
+	test "quinoa2 deberia dar semillas"{
+		assert.that(quinoa2.daSemillas())
+	}
+	
+	
+
+}
+
+
